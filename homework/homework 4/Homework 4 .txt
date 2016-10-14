@@ -1,0 +1,82 @@
+Q1 a) 
+   > data=read.table("C:/Users/qiuiming/Desktop/598-Q1.txt",header=T)
+   > data
+b) > x=head(data,5)
+   > x
+ Gender FSIQ VIQ PIQ Weight Height MRI_Count
+1 Female  133 132 124    118   64.5    816932
+2   Male  140 150 124     ก๊ก่   72.5   1001121
+3   Male  139 123 150    143   73.3   1038437
+4   Male  133 129 128    172   68.8    965353
+5 Female  137 132 134    147   65.0    951545
+c) > which(is.na(data$FSIQ))
+   integer(0)
+   > which(is.na(data$VIQ))
+   integer(0)
+   > which(is.na(data$PIQ))
+   integer(0)
+   > which(is.na(data$Weight))
+   [1]  2 21
+   > which(is.na(data$Height))
+   [1] 21
+d) > summary(data$FSIQ)
+     Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    77.00   89.75  116.50  113.40  135.50  144.00 
+   > summary(data$VIQ)
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   71.0    90.0   113.0   112.4   129.8   150.0 
+   > summary(data$PIQ)
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   72.00   88.25  115.00  111.00  128.00  150.00 
+   > summary(data$Weight)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  106.0   135.2   146.5   151.1   172.0   192.0       2 
+   > summary(data$Height)
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  62.00   66.00   68.00   68.53   70.50   77.00       1 
+
+Q2 a)
+   > BABIES=read.table("C:/Users/qiuiming/Desktop/BABIES.txt",header=T)
+   > BABIES$bwt[BABIES$bwt==999]=NA
+   > BABIES$gestation[BABIES$gestation==999]=NA
+   > BABIES$parity[BABIES$parity==9]=NA
+   > BABIES$height[BABIES$height==99]=NA
+   > BABIES$weight[BABIES$weight==999]=NA
+   > BABIES$smoke[BABIES$smoke==9]=NA
+   > BABIES
+   > CLEAN=na.omit(BABIES)
+   > CLEAN
+   
+
+b) > x=subset(CLEAN,smoke==0,header=T)
+   > y=subset(CLEAN,smoke==1,header=T)
+   > Smoking=x$weight
+   > Nonsmoking=y$weight
+   > boxplot(Smoking,Nonsmoking,col=c(2,3),main="The Birth Weights of Babies for Smoking\n and Non-smoking Mothers")
+
+c) > summary(x$weight)
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   89.0   115.0   126.0   129.5   140.0   250.0 0 
+
+   > summary(y$weight)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   87.0   112.0   125.0   126.9   137.0   215.0 
+
+
+Q3 > 1-pnorm(350,75,450)
+   [1] 0.270563
+
+Q4 a)> pchisq(8,10)
+     [1] 0.3711631
+   b)> 1-pchisq(6,10)
+     [1] 0.8152632
+   c)> qchisq(0.95,10)
+     [1] 18.30704
+
+Q5 > curve(dnorm(x),-3,3,col=1,lty=1,lwd=2,xlab="x",ylab="density",main="The Student's t distribution and Standard Normal Distribution")
+   > curve(dt(x,1),-3,3,col=2,lty=2,lwd=2,add=T)
+   > curve(dt(x,2),-3,3,col=3,lty=3,lwd=2,add=T)
+   > curve(dt(x,4),-3,3,col=4,lty=4,lwd=2,add=T)
+   > curve(dt(x,10),-3,3,col=5,lty=5,lwd=2,add=T)
+   > curve(dt(x,20),-3,3,col=6,lty=6,lwd=2,add=T)
+   > legend(1.5,0.35,legend=c("norm","n=1","n=2","n=4","n=10","n=20"),col=1:6,lty=1:6)

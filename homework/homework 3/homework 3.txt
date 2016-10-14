@@ -1,0 +1,38 @@
+> utils:::menuInstallPkgs()
+--- Please select a CRAN mirror for use in this session ---
+trying URL 'http://ftp.ussg.iu.edu/CRAN/bin/windows/contrib/3.0/lattice_0.20-23.zip'
+Content type 'application/zip' length 725413 bytes (708 Kb)
+opened URL
+downloaded 708 Kb
+
+package ‘lattice’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\huang548\AppData\Local\Temp\RtmpA77Bn8\downloaded_packages
+> library(lattice)
+> library(abd)
+Loading required package: nlme
+Loading required package: grid
+Loading required package: mosaic
+
+Attaching package: ‘mosaic’
+
+The following objects are masked from ‘package:stats’:
+
+    binom.test, cor, cov, D, fivenum, IQR, median, prop.test, sd,
+    t.test, var
+
+Th
+
+    max, mean, min, print, prod, range, sample, sum
+
+> data(package="abd")
+> data(TwoKid)
+Warning message:
+In data(TwoKid) : data set ‘TwoKid’ not found
+> TwoKids
+  num.boys count
+1        0   530
+2        1  1332
+3        2   582
+> PlantGrowth

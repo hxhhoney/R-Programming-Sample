@@ -1,0 +1,38 @@
+library(base)
+data(cars)
+x=cars$speed
+y=cars$dist
+model=lm(y~x)
+model2<-lm(y~-1+x) # No intercept model
+coef(model)
+coef(model2)
+
+xnew=21
+xnew=as.data.frame(xnew)
+colnames(xnew)<-"x"
+predict(model, xnew, interval="pred")
+
+ozone=read.table("http://www.agrocampus-ouest.fr/igagrocampus-ouest.fr/math/RforStat/ozone.txt", header=T)
+model=lm(maxO3~T12, data=ozone)
+xnew<-20
+xnew=as.data.frame(xnew)
+colnames(xnew)<-"T12"
+predict(model, xnew, interval="pred")
+
+
+
+x=mammals$body
+y=mammals$brain
+model=lm(y~x)
+residuals<-residuals(model)
+plot(residuals)
+t.text(,)
+
+max(residuals)
+
+x=log(mammals$brain)
+y=log(mammals$body)
+
+plot(x,y,main="logBrain VS logBody plot",xlmab="logbrain",ylab="logbody")
+
+abline(model)
